@@ -13,7 +13,7 @@ POST http://localhost:3000/routes
 Content-Type: application/json
 
 {
-    "title": "Shopping Itaguaçu",
+    "title": "Random Route",
     "startPosition": "-27.5830119,-48.6088232,15",
     "endPosition": "-27.5830118,-48.6088231,16"
 }
