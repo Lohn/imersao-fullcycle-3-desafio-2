@@ -14,7 +14,7 @@ services:
       - db
   next:
     build: .docker/next
-    entrypoint: dockerize -wait tcp://db:5432 -timeout 40s /entrypoint.sh
+    entrypoint: dockerize -wait tcp://api:3000 -timeout 40s /entrypoint.sh
     container_name: imersao-fullcycle-3-desafio2-next
     ports:
       - 3001:3000
