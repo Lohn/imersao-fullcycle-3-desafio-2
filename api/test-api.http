@@ -1,0 +1,31 @@
+GET http://localhost:3000/routes
+
+###
+GET http://localhost:3000/routes/853f5cb4-fc59-4c13-a098-3f2ebdb0de89
+
+
+###
+GET http://localhost:3000/routes/111111
+
+
+###
+POST http://localhost:3000/routes
+Content-Type: application/json
+
+{
+    "title": "Shopping Itaguaçu",
+    "startPosition": "-27.5830119,-48.6088232,15",
+    "endPosition": "-27.5830118,-48.6088231,16"
+}
+
+###
+PATCH http://localhost:3000/routes/853f5cb4-fc59-4c13-a098-3f2ebdb0de89
+Content-Type: application/json
+
+{
+    "title": "Shopping Itaguaçu 2",
+    "startPosition": "-27.5830129,-48.6088232,15"
+}
+
+###
+DELETE http://localhost:3000/routes/853f5cb4-fc59-4c13-a098-3f2ebdb0de89
