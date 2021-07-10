@@ -15,6 +15,15 @@ Para implementar o sistema foi criado um script que carrega todos os arquivos de
 `cd k8s
 ./applyK8s.sh`
 
+Para encaminhar as portas e acessar os servidores localmente:
+
+- API (nest.js)
+`kubectl port-forward svc/imersao-fullcycle-3-desafio-2-api 3000:3000`
+
+- Frontend (next.js)
+`kubectl port-forward svc/imersao-fullcycle-3-desafio-2-next 3001:3001`
+
+
 Os passos para a migração foram os seguintes:
 
 ## 1. Migrar o Postgresql
@@ -47,6 +56,7 @@ A solução, simples, segundo essa [issue da rocketseat](https://github.com/rock
 ## 5. Sugestões de melhorias
 - Validar o objeto latlong na API
 - Melhorar o sistema de manutenção das migrations
+- Melhorar a forma de acesso ao sistema sem usar a "gambiarra" do port-forward. Ingress ou algo do gênero, eu presumo.
 - Implementar um jeito menos 'gohorse' de copiar os fontes pra dentro das imagens docker (eu faço um clone, e copio as pastas pra cada contexto docker [ por quê? porque quando você inicia um build o docker copia todas os arquivos pra um ambiente temporário. Já percebeu que tem horas que ele demora um tempão pra começar o build? Pois é, diretórios grandes.])
 
 Acho que é o que eu consigo pensar até o momento.
