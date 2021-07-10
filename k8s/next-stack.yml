@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imersao-fullcycle-3-desafio-2-next
+spec:
+  selector:
+    matchLabels:
+      app: imersao-fullcycle-3-desafio-2-next
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: imersao-fullcycle-3-desafio-2-next
+    spec:
+      containers:
+        - name: imersao-fullcycle-3-desafio-2-next
+          image: jlohn/imersao-fullcycle-3-desafio-2-next
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 3000
+          env:
+          - name: "NEXT_PUBLIC_STORE_API_URL"
+            value: "http://imersao-fullcycle-3-desafio-2-api:3000"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: imersao-fullcycle-3-desafio-2-next
+spec:
+  selector:
+    app: imersao-fullcycle-3-desafio-2-next
+  ports:
+    - port: 3001
+      targetPort: 3000
+  type: ClusterIP

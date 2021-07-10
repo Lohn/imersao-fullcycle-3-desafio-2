@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imersao-fullcycle-3-desafio-2-db
+spec:
+  selector:
+    matchLabels:
+      app: imersao-fullcycle-3-desafio-2-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: imersao-fullcycle-3-desafio-2-db
+    spec:
+      containers:
+        - name: imersao-fullcycle-3-desafio-2-db
+          image: postgres:13
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: imersao-fullcycle-3-desafio-2-db
+          envFrom:
+          - configMapRef:
+              name: imersao-fullcycle-3-desafio-2-db-config
+      volumes:
+        - name: imersao-fullcycle-3-desafio-2-db
+          persistentVolumeClaim:
+            claimName: imersao-fullcycle-3-desafio-2-db-pvc
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: imersao-fullcycle-3-desafio-2-db
+spec:
+  selector:
+    app: imersao-fullcycle-3-desafio-2-db
+  ports:
+    - port: 5432
+  type: ClusterIP
